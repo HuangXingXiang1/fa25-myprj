@@ -4,7 +4,19 @@ public class StarTriangle5 {
      * The first row contains 1 star, the second 2 stars, and so on. 
      */
    public static void starTriangle5() {
-      // TODO: Fill in this function
+      for (int i = 0; i < 5; i++)
+      {
+          for (int k = i; k < 4; k++)
+          {
+              System.out.print(" ");
+          }
+          for (int j = 0; j < i + 1; j++)
+          {
+              System.out.print("*");
+          }
+
+          System.out.println();
+      }
    }
    
    public static void main(String[] args) {
