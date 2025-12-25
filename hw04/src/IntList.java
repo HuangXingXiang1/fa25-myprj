@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.In;
+
 public class IntList {
     int first;
     IntList rest;
@@ -42,8 +44,11 @@ public class IntList {
      * This method is non-destructive, i.e. it must not modify the original list.
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+       if (L == null){
+           return null;
+       }
+       IntList W = new IntList(L.first + x, incrRecursiveNondestructive(L.rest, x));
+       return W;
     }
 
     /**
@@ -52,8 +57,12 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L == null){
+            return null;
+        }
+        L.first = L.first + x;
+        incrRecursiveDestructive(L.rest, x);
+        return L;
     }
 
     /**
@@ -62,8 +71,13 @@ public class IntList {
      * to use recursion. May not modify the original list.
      */
     public static IntList incrIterativeNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        IntList W = new IntList(L.first + x, null);
+        IntList p1 = W;
+        for (IntList p = L.rest; p != null; p = p.rest ){
+            p1.rest = new IntList(p.first + x, null);
+            p1 = p1.rest;
+        }
+        return W;
     }
 
     /**
@@ -73,8 +87,10 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrIterativeDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        for (IntList p = L; p != null; p = p.rest){
+            p.first = p.first + x;
+        }
+        return L;
     }
 
     /**
@@ -82,8 +98,15 @@ public class IntList {
      * elements of L2.
      */
     public static IntList concatenate(IntList L1, IntList L2) {
-        // TODO: Fill in this code
-        return null;
+        if (L1 == null){
+            if (L2 == null){
+                return null;
+            }
+            IntList W = new IntList(L2.first, concatenate(L1, L2.rest));
+            return W;
+        }
+        IntList W = new IntList(L1.first, concatenate(L1.rest, L2));
+        return W;
     }
 
     /*
@@ -96,15 +119,22 @@ public class IntList {
      * Returns the sum of all elements in the IntList.
      */
     public int sum() {
-        // Optional: Fill in this code
-        return 0;
+        int sum = 0;
+        for (IntList p = this; p != null; p = p.rest){
+            sum += p.first;
+        }
+        return sum;
     }
 
     /**
      * Destructively adds x to the end of the list.
      */
     public void addLast(int x) {
-        // Optional: Fill in this code
+        if (rest == null){
+            rest = new IntList(x, null);
+            return;
+        }
+        rest.addLast(x);
     }
 
     /**
@@ -114,6 +144,11 @@ public class IntList {
      * be destructive.
      */
     public void addFirst(int x) {
-        // Optional: Fill in this code
+
+        int oldFirst = this.first;
+        IntList oldRest = this.rest;
+        IntList newNode = new IntList(oldFirst, oldRest);
+        this.first = x;
+        this.rest = newNode;
     }
 }
