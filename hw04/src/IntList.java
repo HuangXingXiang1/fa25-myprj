@@ -40,7 +40,6 @@ public class IntList {
      * Returns an IntList identical to L, but with
      * each element incremented by x. L is not allowed
      * to change. Must use recursion.
-     *
      * This method is non-destructive, i.e. it must not modify the original list.
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
@@ -144,11 +143,7 @@ public class IntList {
      * be destructive.
      */
     public void addFirst(int x) {
-
-        int oldFirst = this.first;
-        IntList oldRest = this.rest;
-        IntList newNode = new IntList(oldFirst, oldRest);
-        this.first = x;
-        this.rest = newNode;
+        rest = new IntList(first, rest);
+        first = x;
     }
 }
