@@ -39,7 +39,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
          */
         @Override
         public T next() {
-            int index = nexthelper((nextFirst+1+current) % content.length);
+            int index = (nextFirst+1+current) % content.length;
             current++;
             return content[index];
         }
