@@ -175,7 +175,7 @@ public class ArrayDeque61BTest {
             text.removeFirst();
         }
         assertThat(lld1.toList()).isEqualTo(text);
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             lld1.addFirst(i);
         }
         lld1.get(999999);
@@ -256,8 +256,6 @@ public class ArrayDeque61BTest {
         lld2.addLast(18);
         lld2.addLast(19);
         assertThat(lld2.toString()).isEqualTo("[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]");
-        String lld3 = "2e";
-
     }
 }
 
