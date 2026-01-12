@@ -1,6 +1,6 @@
 public class Stack {
     // 定义静态的内部类，链表的核心
-    public static class IntNode {
+    private static class IntNode {
         public int item;
         public IntNode next;
 
@@ -9,7 +9,6 @@ public class Stack {
             next = n;
         }
     }
-
     // 哨兵值
     private IntNode sentinel;
     private int size;

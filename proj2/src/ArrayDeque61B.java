@@ -18,7 +18,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
     }
 
     private class WrapIterator implements Iterator<T>{
-        int current = 0;
+        private int current = 0;
         /**
          * Returns {@code true} if the iteration has more elements.
          * (In other words, returns {@code true} if {@link #next} would
