@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 // 引入普林斯顿算法库中的加权快速并查集（Union-Find）实现
-
+@SuppressWarnings("all")
 public class Percolation {
     private final int virtualTop;
     private final int virtualBottom;
@@ -27,6 +27,9 @@ public class Percolation {
     }
 
     // 打开站点
+    /**
+     *
+     */
     public void open(int row, int col) {
         // 验证参数是否合法
         validate(row, col);

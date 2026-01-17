@@ -1,6 +1,9 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.google.common.truth.Truth.assertThat;
 
 /** Tests by Brendan Hu, Spring 2015, revised for 2016 by Josh Hug and for 2023 by Noah Adhikari */
@@ -114,4 +117,23 @@ public class TestBSTMap {
         assertThat(b.get("b")).isEqualTo("provolone");
     }
 
+    @Test
+    public void tomap() {
+        BSTMap<Integer, Integer> b = new BSTMap<>();
+        b.put(8, 8);
+        b.put(4, 4);
+        b.put(3, 3);
+        b.put(2, 2);
+        b.put(6, 6);
+        b.put(5, 5);
+        b.put(7, 7);
+        b.put(10, 10);
+        b.put(11, 11);
+        b.put(12, 12);
+        List<Integer> a = new ArrayList<>();
+        for (int i : b) {
+            a.addLast(i);
+        }
+        assertThat(a).isEqualTo(b.Non_recursive());
+    }
 }
