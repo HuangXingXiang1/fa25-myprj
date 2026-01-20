@@ -8,6 +8,7 @@ import browser.NgordnetQueryHandler;
 import java.util.List;
 
 public class DummyHistoryTextHandler extends NgordnetQueryHandler {
+
     @Override
     public String handle(NgordnetQuery q) {
         List<String> words = q.words();

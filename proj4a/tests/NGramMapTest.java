@@ -29,6 +29,8 @@ public class NGramMapTest {
         expectedCounts.add(795265.0);
 
         TimeSeries request2005to2008 = ngm.countHistory("request");
+        TimeSeries null2005to2008 = ngm.countHistory("啦啦啦");
+        assertThat(null2005to2008).isEmpty();
         assertThat(request2005to2008.years()).isEqualTo(expectedYears);
 
         for (int i = 0; i < expectedCounts.size(); i += 1) {
@@ -93,8 +95,15 @@ public class NGramMapTest {
         fishAndDog.add("fish");
         fishAndDog.add("dog");
         TimeSeries fishPlusDogWeight = ngm.summedWeightHistory(fishAndDog, 1865, 1866);
+        List<String> beastsAndAlbAndAppropriated = new ArrayList<>();
+        beastsAndAlbAndAppropriated.add("beasts");
+        beastsAndAlbAndAppropriated.add("alb");
+        beastsAndAlbAndAppropriated.add("appropriated");
+        TimeSeries beastsAndAlbAndAppropriatedWeight = ngm.summedWeightHistory(beastsAndAlbAndAppropriated);
 
         double expectedFishPlusDogWeight1865 = (136497.0 + 75819.0) / 2563919231.0;
+        double expectedbeastsAndAlbAndAppropriatedWeight2007 = ((130451.0 + 2373.0 + 223409.0) / 28307904288.0);
+        assertThat(beastsAndAlbAndAppropriatedWeight.get(2007)).isWithin(1E-10).of(expectedbeastsAndAlbAndAppropriatedWeight2007);
         assertThat(fishPlusDogWeight.get(1865)).isWithin(1E-10).of(expectedFishPlusDogWeight1865);
     }
 
