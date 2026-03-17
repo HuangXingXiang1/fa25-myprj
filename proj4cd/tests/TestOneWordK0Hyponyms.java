@@ -27,15 +27,14 @@ public class TestOneWordK0Hyponyms {
     /** Wordnet Files */
     public static final String SYNSETS_EECS_FILE = PREFIX + "synsets_eecs.txt";
     public static final String HYPONYMS_EECS_FILE = PREFIX + "hyponyms_eecs.txt";
-    public static final String SYNSET_SIZE16_FILE = PREFIX + "synsets_size16.txt";
-    public static final String HYPONYM_SIZE16_FILE = PREFIX + "hyponyms_size16.txt";
+    public static final String SYNSET_SIZE16_FILE = PREFIX + "synsets16.txt";
+    public static final String HYPONYM_SIZE16_FILE = PREFIX + "hyponyms16.txt";
     public static final String SYNSET_SIZE1000_FILE = PREFIX + "synsets_size1000.txt";
     public static final String HYPONYM_SIZE1000_FILE = PREFIX +  "hyponyms_size1000.txt";
 
     @Test
     public void testActK0() {
-        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(
-                WORD_HISTORY_SIZE3_FILE, YEAR_HISTORY_FILE, SYNSET_SIZE16_FILE, HYPONYM_SIZE16_FILE);
+        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(SYNSET_SIZE16_FILE, HYPONYM_SIZE16_FILE);
         List<String> words = new ArrayList<>();
         words.add("act");
 
@@ -44,6 +43,4 @@ public class TestOneWordK0Hyponyms {
         String expected = "[act, action, change, demotion, human_action, human_activity, variation]";
         assertThat(actual).isEqualTo(expected);
     }
-
-    // TODO: Add more unit tests (including edge case tests) here.
 }

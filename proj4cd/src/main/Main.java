@@ -17,8 +17,8 @@ public class Main {
     /** Wordnet Files */
     private static final String SYNSETS_EECS_FILE = PREFIX + "synsets_eecs.txt";
     private static final String HYPONYMS_EECS_FILE = PREFIX + "hyponyms_eecs.txt";
-    public static final String SYNSETS_SIZE16_FILE = PREFIX + "synsets_size16.txt";
-    public static final String HYPONYMS_SIZE16_FILE = PREFIX + "hyponyms_size16.txt";
+    public static final String SYNSETS_SIZE16_FILE = PREFIX + "synsets16.txt";
+    public static final String HYPONYMS_SIZE16_FILE = PREFIX + "hyponyms16.txt";
     public static final String SYNSETS_SIZE1000_FILE = PREFIX + "synsets_size1000.txt";
     public static final String HYPONYMS_SIZE1000_FILE = PREFIX +  "hyponyms_size1000.txt";
     public static final String SYNSETS_SIZE82191_FILE = PREFIX + "synsets_size82191.txt";
@@ -32,8 +32,10 @@ public class Main {
         NgordnetServer hns = new NgordnetServer();
 
         hns.startUp();
-        // TODO: modify HyponymsHandler
-        // hns.register("hyponyms", new HyponymsHandler());
+        NGramMap nGramMap = new NGramMap(WORD_HISTORY_SIZE14377_FILE, YEAR_HISTORY_FILE);
+        hns.register("history", new HistoryHandler(new NGramMap(WORD_HISTORY_SIZE14377_FILE, YEAR_HISTORY_FILE)));
+        hns.register("historytext", new HistoryTextHandler(new NGramMap(WORD_HISTORY_SIZE14377_FILE, YEAR_HISTORY_FILE)));
+        hns.register("hyponyms", new HyponymsHandler(new WordNet(SYNSETS_SIZE16_FILE, HYPONYMS_SIZE16_FILE),nGramMap));
 
         System.out.println("Finished server startup! Visit http://localhost:4567/ngordnet.html");
     }

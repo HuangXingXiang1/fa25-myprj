@@ -27,8 +27,8 @@ public class TestMultiWordK0Hyponyms {
     /** Wordnet Files */
     public static final String SYNSETS_EECS_FILE = PREFIX + "synsets_eecs.txt";
     public static final String HYPONYMS_EECS_FILE = PREFIX + "hyponyms_eecs.txt";
-    public static final String SYNSET_SIZE16_FILE = PREFIX + "synsets_size16.txt";
-    public static final String HYPONYM_SIZE16_FILE = PREFIX + "hyponyms_size16.txt";
+    public static final String SYNSET_SIZE16_FILE = PREFIX + "synsets16.txt";
+    public static final String HYPONYM_SIZE16_FILE = PREFIX + "hyponyms16.txt";
     public static final String SYNSET_SIZE1000_FILE = PREFIX + "synsets_size1000.txt";
     public static final String HYPONYM_SIZE1000_FILE = PREFIX +  "hyponyms_size1000.txt";
 
@@ -36,8 +36,7 @@ public class TestMultiWordK0Hyponyms {
     /** This is an example from the spec.*/
     @Test
     public void testOccurrenceAndChangeK0() {
-        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(
-                WORD_HISTORY_SIZE3_FILE, YEAR_HISTORY_FILE, SYNSET_SIZE16_FILE, HYPONYM_SIZE16_FILE);
+        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(SYNSET_SIZE16_FILE, HYPONYM_SIZE16_FILE);
         List<String> words = new ArrayList<>();
         words.add("occurrence");
         words.add("change");
@@ -47,7 +46,4 @@ public class TestMultiWordK0Hyponyms {
         String expected = "[alteration, change, increase, jump, leap, modification, saltation, transition]";
         assertThat(actual).isEqualTo(expected);
     }
-
-    // TODO: Add more unit tests (including edge case tests) here.
-
 }

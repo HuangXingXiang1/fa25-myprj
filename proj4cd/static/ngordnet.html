@@ -1,61 +1,65 @@
-
 <!DOCTYPE html>
-<head>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-    <script src="jquery.min.js"></script></head>
-<link rel="stylesheet" href="ngordnet.css">
-<script src="ngordnet.js"></script>
+<html lang="en">
 
-<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ngordnet Explorer</title>
+
+    <script src="jquery.min.js"></script>
+    <script src="ngordnet.js"></script>
+
+    <link rel="stylesheet" href="ngordnet.css">
+</head>
+
 <body>
 
-<p><!--<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.</canvas>-->
-    <img src="blank.png" id="plot">
-    <textarea class = "textresult" id = "textresult"></textarea>
+<div class="card">
 
-</p>
+    <h1>Ngordnet Explorer</h1>
 
-<table>
-    <tr>
-        <td>
-            words<br>
-            <input type="text" id="words"><br>
-        </td>
-        <td>
-            start<br>
-            <input type="text" id="start", value="2000"><br>
-        </td>
-        <td>
-            end<br>
-            <input type="text" id="end", value="2020"><br>
-        </td>
-        <td>
-            k<br>
-            <input type="text" id="k", value=""><br>
-        </td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <td>
-            <div class="btn" id = "history">history</div></td>
-        <td>
-            <div class="btn" id = "historytext">history (text)</div>
-        </td>
-        <td>
-            <div class="btn" id = "hyponyms">hyponyms</div>
-        </td>
-        <td>
-            <div class="btn" id = "hypohist">hypohist</div>
-        </td>
-        <td>
-            <div class="btn" id = "commonancestors">common ancestors</div>
-        </td>
+    <div class="inputs">
 
-    </tr>
-</table>
+        <div>
+            <label>Words</label>
+            <input type="text" id="words" placeholder="enter words...">
+        </div>
+
+        <div>
+            <label>Start</label>
+            <input type="text" id="start" value="2000">
+        </div>
+
+        <div>
+            <label>End</label>
+            <input type="text" id="end" value="2020">
+        </div>
+
+        <div>
+            <label>k</label>
+            <input type="text" id="k">
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="history">History</button>
+        <button id="historytext">History (Text)</button>
+        <button id="hyponyms">Hyponyms</button>
+        <button id="hypohist">Hypohist</button>
+        <button id="commonancestors">Common Ancestors</button>
+
+    </div>
+
+    <div class="output">
+
+        <img src="blank.png" id="plot">
+
+        <textarea id="textresult" placeholder="Results will appear here..."></textarea>
+
+    </div>
+
+</div>
 
 </body>
-
 </html>
